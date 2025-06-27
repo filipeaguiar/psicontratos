@@ -1,0 +1,63 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+:root {
+  --ctp-text: #4c4f69;
+  --ctp-base: #eff1f5;
+  --ctp-surface0: #e6e9ef;
+  --ctp-blue: #1e66f5;
+}
+
+[data-bs-theme="dark"] {
+  --ctp-text: #cdd6f4;
+  --ctp-base: #1e1e2e;
+  --ctp-surface0: #313244;
+  --ctp-blue: #89b4fa;
+}
+
+body {
+  background-color: var(--ctp-base);
+  color: var(--ctp-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card {
+  background-color: var(--ctp-surface0);
+  color: var(--ctp-text);
+}
+
+.card-header {
+  background-color: var(--ctp-surface0);
+}
+
+.form-control,
+.form-select {
+  background-color: var(--ctp-base);
+  color: var(--ctp-text);
+  border-color: var(--ctp-surface0);
+}
+
+.form-control::placeholder {
+  color: var(--ctp-text);
+}
+
+.btn-primary {
+  background-color: var(--ctp-blue);
+  border-color: var(--ctp-blue);
+}
+
+.btn-primary:hover {
+  background-color: var(--ctp-blue);
+  border-color: var(--ctp-blue);
+  filter: brightness(0.9);
+}
+
+.btn-success {
+  background-color: var(--ctp-blue);
+  border-color: var(--ctp-blue);
+}
+
+.btn-success:hover {
+  background-color: var(--ctp-blue);
+  border-color: var(--ctp-blue);
+  filter: brightness(0.9);
+}
