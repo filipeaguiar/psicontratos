@@ -14,6 +14,8 @@ export const generatePdf = async (htmlContent: string, filename: string, margins
     format: 'a4',
   });
 
+  pdf.setDocumentProperties({ title: title || filename });
+
   const pdfWidth = pdf.internal.pageSize.getWidth();
   const pdfHeight = pdf.internal.pageSize.getHeight();
 
