@@ -18,13 +18,17 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Debugging - List files
+        run: | 
+          pwd
+          ls -F
+
       - name: Install dependencies
         run: npm install
         working-directory: psicontrato
 
       - name: Build
         run: npm run build
-        working-directory: psicontrato
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
