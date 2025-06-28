@@ -12,6 +12,14 @@
   </head>
   <body>
     <div id="root"></div>
+    <script type="text/javascript">
+      // Restaura a URL original se houver uma no sessionStorage
+      var originalPath = sessionStorage.getItem('originalPath');
+      if (originalPath) {
+        history.replaceState(null, '', originalPath);
+        sessionStorage.removeItem('originalPath');
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

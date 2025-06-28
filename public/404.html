@@ -4,10 +4,9 @@
   <meta charset="utf-8">
   <title>Redirecionando...</title>
   <script type="text/javascript">
-    // Redireciona para o index.html, preservando o caminho da URL
-    var path = window.location.pathname;
-    var newPath = path.replace(/\/[^\/]*$/, '/'); // Remove o último segmento (ex: /client-contact -> /)
-    window.location.replace(newPath + 'index.html' + window.location.hash + window.location.search);
+    // Armazena a URL original no sessionStorage e redireciona para index.html
+    sessionStorage.setItem('originalPath', window.location.pathname + window.location.search + window.location.hash);
+    window.location.replace('/index.html');
   </script>
 </head>
 <body>
