@@ -1,25 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Redirecionando...</title>
-    <script type="text/javascript">
-      const basePath = '/psicontratos'; // Nome do seu repositório
-      const path = window.location.pathname.replace(new RegExp(`^${basePath}`), ''); // Remove base path se presente
-      // Redireciona para a raiz da aplicação com o caminho original no hash
-      // Ex: /psicontratos/alguma/rota -> /psicontratos/#/alguma/rota
-      const newLocation = `${basePath}/#${path.startsWith('/') ? path.substring(1) : path}${window.location.search}${window.location.hash}`;
-      window.location.replace(newLocation);
-    </script>
-  </head>
-  <body>
-    Se você não for redirecionado automaticamente, <a id="redirect-link" href="#">clique aqui</a>.
-    <script>
-      // Atualiza o link de fallback caso o JS demore ou falhe no redirecionamento imediato
-      const basePathLink = '/psicontratos';
-      const pathLink = window.location.pathname.replace(new RegExp(`^${basePathLink}`), '');
-      const fallbackLink = `${basePathLink}/#${pathLink.startsWith('/') ? pathLink.substring(1) : pathLink}${window.location.search}${window.location.hash}`;
-      document.getElementById('redirect-link').href = fallbackLink;
-    </script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecionando...</title>
+  <script type="text/javascript">
+    // Redireciona para o index.html, preservando o caminho da URL
+    var path = window.location.pathname;
+    var newPath = path.replace(/\/[^\/]*$/, '/'); // Remove o último segmento (ex: /client-contact -> /)
+    window.location.replace(newPath + 'index.html' + window.location.hash + window.location.search);
+  </script>
+</head>
+<body>
+  <p>Redirecionando para a página inicial...</p>
+</body>
 </html>
