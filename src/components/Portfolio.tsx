@@ -312,17 +312,6 @@ const Portfolio: React.FC = () => {
         navigate(path);
     };
 
-    // Helper for responsive styles that would normally be in media queries
-    // This is a simplified approach. For complex scenarios, CSS Modules or styled-components are better.
-    const getResponsiveStyles = () => {
-        // Placeholder: In a real app, you might check window width here,
-        // but that's generally discouraged for performance and SSR.
-        // Media queries in CSS are the standard way.
-        // For this conversion, we've embedded base styles.
-        // Add comments for sm: and lg: variations in the styles object itself.
-        return {};
-    };
-
     const combinedPortfolioContainerStyle = {
         ...styles.portfolioContainer,
         // Manually add responsive padding here if needed, or use a more robust solution
