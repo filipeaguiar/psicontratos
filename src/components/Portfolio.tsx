@@ -81,7 +81,7 @@ const Portfolio: React.FC = () => {
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
-    fontFamily: ''Georgia', serif',
+    fontFamily: "'Georgia', serif",
     lineHeight: '1.6',
     color: '#333',
     maxWidth: '900px',
