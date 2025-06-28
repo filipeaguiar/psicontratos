@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ContractForm from './components/ContractForm';
 import ClientForm from './components/ClientForm';
-import Home from './components/Home';
+import Portfolio from './components/Portfolio';
 
 function App() {
   useEffect(() => {
@@ -17,7 +17,7 @@ function App() {
   return (
     <Router basename="/">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Portfolio />} />
         <Route path="/gerar-contrato" element={<ContractForm />} />
         <Route path="/client-contact" element={<ClientForm />} />
       </Routes>
