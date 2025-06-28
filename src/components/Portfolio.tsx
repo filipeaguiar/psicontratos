@@ -1,183 +1,133 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone, faMapMarkerAlt, faGraduationCap, faBriefcase, faLightbulb, faAward, faBookOpen } from '@fortawesome/free-solid-svg-icons';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import './Portfolio.css';
+
+// --- Ícones ---
+const ArrowRightIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 z-10">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+    </svg>
+);
+
+const DocumentIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+    </svg>
+);
+
+// --- Dados das Qualificações Profissionais ---
+const qualifications = [
+  {
+    title: 'Formação Acadêmica',
+    description: 'Graduada em Psicologia pela [Nome da Universidade], com especialização em Terapia Cognitivo-Comportamental (TCC). Contínuo aprimoramento em cursos sobre ansiedade, depressão e dinâmicas de relacionamento.',
+    imageUrl: 'https://placehold.co/600x400/1A1A1A/C9A979?text=Formação',
+    tags: ['Psicologia', 'TCC', 'Especialização'],
+    buttonText: 'Agendar consulta',
+    ctaUrl: '/client-contact',
+  },
+  {
+    title: 'Experiência Clínica',
+    description: 'Atuação em clínica particular com foco no atendimento de adultos e casais. Experiência no tratamento de transtornos de ansiedade, estresse, questões de autoestima e conflitos interpessoais.',
+    imageUrl: 'https://placehold.co/600x400/2B2B2B/C9A979?text=Experiência',
+    tags: ['Clínica Particular', 'Adultos', 'Casais'],
+    buttonText: 'Agendar consulta',
+    ctaUrl: '/client-contact',
+  },
+  {
+    title: 'Abordagem Terapêutica',
+    description: 'Minha prática é baseada na empatia e na construção de um espaço seguro e acolhedor. Utilizo técnicas da TCC para ajudar os clientes a identificar padrões e desenvolver novas perspectivas e habilidades.',
+    imageUrl: 'https://placehold.co/600x400/3C3C3C/C9A979?text=Abordagem',
+    tags: ['Empatia', 'Acolhimento', 'Resultados'],
+    buttonText: 'Agendar consulta',
+    ctaUrl: '/client-contact',
+  },
+];
 
 const Portfolio: React.FC = () => {
-  return (
-    <div style={styles.container}>
-      <header style={styles.header}>
-        <h1 style={styles.name}>Fernanda Maria Albuquerque Mota</h1>
-        <p style={styles.title}>Psicóloga | CRP 02/21789</p>
-        <div style={styles.contactInfo}>
-          <p><FontAwesomeIcon icon={faMapMarkerAlt} style={styles.icon} /> Rua Mateus Tartaruga, n° 45, Hipódromo, Recife/PE</p>
-          <p><FontAwesomeIcon icon={faPhone} style={styles.icon} /> (81) 98129-7306</p>
-          <p><FontAwesomeIcon icon={faEnvelope} style={styles.icon} /> psicofernanda85@gmail.com</p>
-        </div>
-        <div style={styles.buttonContainer}>
-          <Link to="/gerar-contrato" style={styles.buttonPrimary}>Gerar Contrato</Link>
-          <Link to="/client-contact" style={styles.buttonSecondary}><FontAwesomeIcon icon={faWhatsapp} style={styles.icon} /> Contato Cliente</Link>
-        </div>
-      </header>
+    // Hook do react-router-dom para navegar entre as rotas
+    const navigate = useNavigate();
 
-      <section style={styles.section}>
-        <h2 style={styles.sectionTitle}><FontAwesomeIcon icon={faGraduationCap} style={styles.icon} /> Formação</h2>
-        <ul style={styles.list}>
-          <li>Graduada em Psicologia pela Universidade Federal de Alagoas – Campus Arapiraca/ Unidade Palmeira dos Índios.</li>
-          <li>Formação Clínica em Gestalt.</li>
-          <li>Pós-Graduação em Neuropsicologia pela Faculdade Unyleya.</li>
-          <li>Pós-Graduação em TEA (Transtorno do Espectro Autista) pelo Grupo CEFAPP – Em fase de conclusão.</li>
-        </ul>
-      </section>
+    const handleNavigate = (path: string) => {
+        navigate(path);
+    };
 
-      <section style={styles.section}>
-        <h2 style={styles.sectionTitle}><FontAwesomeIcon icon={faBriefcase} style={styles.icon} /> Experiência Profissional</h2>
-        <ul style={styles.list}>
-          <li>**2021 – Atualmente:** Psicóloga na AACD Associação de Assistência à Criança Deficiente.</li>
-          <li>**2021-2024:** Psicóloga na Clínica Espaço Sensoré.</li>
-          <li>**2017-2021:** Psicóloga na Fundação Giacomo e Lucia Perrone.</li>
-          <li>**2019-2021:** Psicóloga na Clínica Espaço Metamorfosis.</li>
-          <li>**2018 - Atualmente:** Atendimento Clínico de Crianças e Adolescentes com TEA.</li>
-          <li>**2015-2016:** Diretora Administrativa no Memorial da Mulher Ceci Cunha.</li>
-          <li>**2013-2014:** Coordenadora de Articulação Institucional na Secretaria Municipal de Políticas para as Mulheres.</li>
-        </ul>
-      </section>
+    return (
+        <section 
+            id="qualificacoes" 
+            className="portfolio-section"
+            style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/dark-matter.png')"}}
+        >
+            {/* Overlay escuro para garantir a legibilidade do texto */}
+            <div className="portfolio-overlay" />
 
-      <section style={styles.section}>
-        <h2 style={styles.sectionTitle}><FontAwesomeIcon icon={faLightbulb} style={styles.icon} /> Habilidades e Competências</h2>
-        <ul style={styles.list}>
-          <li>Facilidade em trabalhar com grupos terapêuticos com pacientes.</li>
-          <li>Proativa em trabalhos com equipe multidisciplinar.</li>
-          <li>Responsável, dinâmica e hábil em lidar com mudanças no ambiente de trabalho.</li>
-          <li>Habilidade em coordenar equipes.</li>
-          <li>Experiência de 5 anos com crianças no Espectro Autista, com Síndrome de Down, Transtorno do Déficit de Atenção e Hiperatividade, Paralisia cerebral e outras deficiências.</li>
-        </ul>
-      </section>
+            <div className="portfolio-container">
+                {/* --- Título da Seção --- */}
+                <div className="portfolio-title-section">
+                    <h2 className="portfolio-title">
+                        Uma jornada de cuidado guiada por uma <span className="portfolio-title-highlight">profissional qualificada</span>
+                    </h2>
+                    <p className="portfolio-subtitle">
+                        Conheça a base de conhecimento e experiência que sustenta minha prática clínica.
+                    </p>
+                </div>
 
-      <section style={styles.section}>
-        <h2 style={styles.sectionTitle}><FontAwesomeIcon icon={faBookOpen} style={styles.icon} /> Cursos e Certificações</h2>
-        <ul style={styles.list}>
-          <li>Capacitação em Intervenção Precoce em Crianças com Autismo – Modelo Denver.</li>
-          <li>Treinamento de Pais Para Profissionais – CIA do Saber.</li>
-          <li>Curso sobre Sofrimento Psíquico Grave, Intervenção Precoce nas Psicoses e Saúde Mental.</li>
-          <li>Capacitação para profissionais de Atendimento à Mulher em Situação de Violência.</li>
-          <li>Capacitação na Lei Maria da Penha.</li>
-        </ul>
-      </section>
-
-      <section style={styles.section}>
-        <h2 style={styles.sectionTitle}><FontAwesomeIcon icon={faAward} style={styles.icon} /> Premiações</h2>
-        <ul style={styles.list}>
-          <li>Mérito Acadêmico (2011 e 2012).</li>
-        </ul>
-      </section>
-
-      <footer style={styles.footer}>
-        <p>&copy; {new Date().getFullYear()} Fernanda Maria Albuquerque Mota. Todos os direitos reservados.</p>
-      </footer>
-    </div>
-  );
-};
-
-const styles: { [key: string]: React.CSSProperties } = {
-  container: {
-    fontFamily: "'Georgia', serif",
-    lineHeight: '1.6',
-    color: '#333',
-    maxWidth: '900px',
-    margin: '20px auto',
-    padding: '20px',
-    background: '#fff',
-    boxShadow: '0 0 15px rgba(0,0,0,0.1)',
-    borderRadius: '8px',
-  },
-  header: {
-    textAlign: 'center',
-    marginBottom: '40px',
-    paddingBottom: '20px',
-    borderBottom: '2px solid #eee',
-  },
-  name: {
-    fontSize: '2.8em',
-    margin: '0',
-    color: '#2c3e50',
-  },
-  title: {
-    fontSize: '1.4em',
-    color: '#7f8c8d',
-    marginBottom: '20px',
-  },
-  contactInfo: {
-    fontSize: '1.1em',
-    color: '#555',
-  },
-  icon: {
-    marginRight: '8px',
-    color: '#3498db',
-  },
-  buttonContainer: {
-    marginTop: '30px',
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '15px',
-  },
-  buttonPrimary: {
-    display: 'inline-block',
-    padding: '12px 25px',
-    backgroundColor: '#3498db',
-    color: 'white',
-    textDecoration: 'none',
-    borderRadius: '5px',
-    fontSize: '1.1em',
-    fontWeight: 'bold',
-    transition: 'background-color 0.3s ease',
-    border: 'none',
-    cursor: 'pointer',
-  },
-  buttonSecondary: {
-    display: 'inline-block',
-    padding: '12px 25px',
-    backgroundColor: '#2ecc71',
-    color: 'white',
-    textDecoration: 'none',
-    borderRadius: '5px',
-    fontSize: '1.1em',
-    fontWeight: 'bold',
-    transition: 'background-color 0.3s ease',
-    border: 'none',
-    cursor: 'pointer',
-  },
-  section: {
-    marginBottom: '30px',
-    padding: '20px',
-    background: '#f9f9f9',
-    borderRadius: '8px',
-    borderLeft: '5px solid #3498db',
-  },
-  sectionTitle: {
-    fontSize: '1.8em',
-    color: '#2c3e50',
-    marginBottom: '15px',
-    borderBottom: '1px solid #eee',
-    paddingBottom: '10px',
-  },
-  list: {
-    listStyleType: 'none',
-    padding: '0',
-  },
-  listItem: {
-    marginBottom: '8px',
-    color: '#444',
-  },
-  footer: {
-    textAlign: 'center',
-    marginTop: '40px',
-    paddingTop: '20px',
-    borderTop: '1px solid #eee',
-    color: '#7f8c8d',
-    fontSize: '0.9em',
-  },
+                {/* --- Grade de Qualificações --- */}
+                <div className="qualifications-grid">
+                    {qualifications.map((qual, index) => (
+                        <div key={index} className="qualification-card group">
+                            <div className="qualification-image-wrapper">
+                                <img 
+                                    src={qual.imageUrl} 
+                                    alt={`Imagem ilustrativa de ${qual.title}`}
+                                    className="qualification-image" 
+                                    onError={(e) => { 
+                                        const target = e.target as HTMLImageElement;
+                                        target.onerror = null; 
+                                        target.src='https://placehold.co/600x400/1A1A1A/C9A979?text=Imagem+Indisponível';
+                                    }}
+                                />
+                            </div>
+                            <div className="qualification-content">
+                                <div>
+                                    <h3 className="qualification-title">{qual.title}</h3>
+                                    <p className="qualification-description">{qual.description}</p>
+                                    <div className="qualification-tags">
+                                        {qual.tags.map(tag => (
+                                            <span key={tag} className="qualification-tag">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="qualification-button-wrapper">
+                                    <button 
+                                        onClick={() => handleNavigate(qual.ctaUrl)}
+                                        className="qualification-button group"
+                                    >
+                                        <span className="shine-effect"></span>
+                                        <span className="qualification-button-content">{qual.buttonText} <ArrowRightIcon/></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            
+            {/* --- Botão Flutuante para Gerador de Contrato --- */}
+            <button
+                onClick={() => handleNavigate('/gerar-contrato')}
+                title="Gerador de Contrato para Psicólogos"
+                className="floating-button group"
+            >
+                <DocumentIcon />
+                <span className="floating-button-tooltip">
+                    Gerador de Contrato
+                </span>
+            </button>
+        </section>
+    );
 };
 
 export default Portfolio;
