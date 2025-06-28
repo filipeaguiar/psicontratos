@@ -22,6 +22,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+      - name: Install @types/node
+        run: npm install --save-dev @types/node
 
       - name: Build
         run: npm run build
