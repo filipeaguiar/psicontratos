@@ -409,7 +409,7 @@ const Portfolio: React.FC = () => {
             </div>
 
             <button
-                onClick={() => handleNavigate('/contract-form')}
+                onClick={() => handleNavigate('/gerar-contrato')}
                 title="Gerador de Contrato para Psicólogos"
                 style={{
                     ...styles.fab,
