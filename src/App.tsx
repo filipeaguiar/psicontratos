@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <Router basename="/psicontratos/">
       <div className="container py-4">
         <h1 className="display-4 fw-bold mb-4 text-center">Gerador de Contratos</h1>
         <nav className="mb-4">

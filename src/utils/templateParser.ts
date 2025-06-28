@@ -7,7 +7,7 @@ interface TemplateField {
 
 // parseTemplate will now return the full template content and all fields found within it.
 export const parseTemplate = async () => {
-  const response = await fetch('template.html');
+  const response = await fetch(`${import.meta.env.BASE_URL}template.html`);
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
