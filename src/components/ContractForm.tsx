@@ -8,6 +8,9 @@ interface FormData {
 }
 
 const ContractForm: React.FC = () => {
+  useEffect(() => {
+    document.title = 'Gerar Contrato';
+  }, []);
   const [templateContent, setTemplateContent] = useState<string>('');
   const [templateFields, setTemplateFields] = useState<any[]>([]);
   const [formData, setFormData] = useState<FormData>(() => {

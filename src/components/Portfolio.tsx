@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Portfolio.css';
 
@@ -45,6 +45,9 @@ const qualifications = [
 ];
 
 const Portfolio: React.FC = () => {
+    useEffect(() => {
+        document.title = 'Atendimento Psicológico';
+    }, []);
     // Hook do react-router-dom para navegar entre as rotas
     const navigate = useNavigate();
 

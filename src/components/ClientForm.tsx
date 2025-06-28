@@ -4,6 +4,9 @@ import { faUser, faPhone, faEnvelope, faAddressCard, faIdCard, faBriefcaseMedica
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 const ClientForm: React.FC = () => {
+  useEffect(() => {
+    document.title = 'Entre em Contato';
+  }, []);
   const [clientFullName, setClientFullName] = useState('');
   const [clientCPF, setClientCPF] = useState('');
   const [clientRG, setClientRG] = useState('');
