@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faPhone, faEnvelope, faAddressCard, faIdCard, faBriefcaseMedical } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faPhone, faEnvelope, faAddressCard, faIdCard, faBriefcaseMedical, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 const ClientForm: React.FC = () => {
@@ -11,8 +11,10 @@ const ClientForm: React.FC = () => {
   const [clientEmail, setClientEmail] = useState('');
   const [clientPhone, setClientPhone] = useState('');
   const [serviceType, setServiceType] = useState('');
+  const [howFoundUs, setHowFoundUs] = useState('');
 
   const serviceTypeOptions = ['Psicoterapia individual', 'Aconselhamento psicológico', 'Orientação psicológica', 'Atendimento em grupo', 'Outro'];
+  const howFoundUsOptions = ['Indicação', 'Redes Sociais', 'Pesquisa Online', 'Site/Blog', 'Outro'];
 
   useEffect(() => {
     setClientFullName(localStorage.getItem('clientFullName') || '');
@@ -22,6 +24,7 @@ const ClientForm: React.FC = () => {
     setClientEmail(localStorage.getItem('clientEmail') || '');
     setClientPhone(localStorage.getItem('clientPhone') || '');
     setServiceType(localStorage.getItem('serviceType') || '');
+    setHowFoundUs(localStorage.getItem('howFoundUs') || '');
   }, []);
 
   useEffect(() => {
@@ -32,18 +35,12 @@ const ClientForm: React.FC = () => {
     localStorage.setItem('clientEmail', clientEmail);
     localStorage.setItem('clientPhone', clientPhone);
     localStorage.setItem('serviceType', serviceType);
-  }, [clientFullName, clientCPF, clientRG, clientAddress, clientEmail, clientPhone, serviceType]);
+    localStorage.setItem('howFoundUs', howFoundUs);
+  }, [clientFullName, clientCPF, clientRG, clientAddress, clientEmail, clientPhone, serviceType, howFoundUs]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Olá! Gostaria de entrar em contato.
-Nome Completo: ${clientFullName}
-CPF: ${clientCPF}
-RG: ${clientRG}
-Endereço: ${clientAddress}
-E-mail: ${clientEmail}
-Telefone/WhatsApp: ${clientPhone}
-Tipo de Atendimento Desejado: ${serviceType}`;
+    const message = `Olá! Gostaria de entrar em contato.\nNome Completo: ${clientFullName}\nCPF: ${clientCPF}\nRG: ${clientRG}\nEndereço: ${clientAddress}\nE-mail: ${clientEmail}\nTelefone/WhatsApp: ${clientPhone}\nTipo de Atendimento Desejado: ${serviceType}\nComo me encontrou: ${howFoundUs}`;
     const whatsappLink = `https://wa.me/5581981297306?text=${encodeURIComponent(message)}`;
     window.open(whatsappLink, '_blank');
   };
@@ -125,7 +122,7 @@ Tipo de Atendimento Desejado: ${serviceType}`;
               required
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-3">
             <label htmlFor="serviceType" className="form-label"><FontAwesomeIcon icon={faBriefcaseMedical} className="me-2" />Tipo de Atendimento Desejado</label>
             <select
               className="form-select"
@@ -136,6 +133,21 @@ Tipo de Atendimento Desejado: ${serviceType}`;
             >
               <option value="">Selecione...</option>
               {serviceTypeOptions.map((option) => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+          </div>
+          <div className="mb-4">
+            <label htmlFor="howFoundUs" className="form-label"><FontAwesomeIcon icon={faSearch} className="me-2" />Como você me encontrou?</label>
+            <select
+              className="form-select"
+              id="howFoundUs"
+              value={howFoundUs}
+              onChange={(e) => setHowFoundUs(e.target.value)}
+              required
+            >
+              <option value="">Selecione...</option>
+              {howFoundUsOptions.map((option) => (
                 <option key={option} value={option}>{option}</option>
               ))}
             </select>
