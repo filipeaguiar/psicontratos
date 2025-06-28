@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faPhone, faEnvelope, faAddressCard, faIdCard, faBriefcaseMedical, faWhatsapp } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faPhone, faEnvelope, faAddressCard, faIdCard, faBriefcaseMedical } from '@fortawesome/free-solid-svg-icons';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 const ClientForm: React.FC = () => {
   const [clientFullName, setClientFullName] = useState('');
