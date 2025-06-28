@@ -15,7 +15,7 @@ function App() {
   }, []);
 
   return (
-    <Router basename="/psicontratos/">
+    <Router basename="/">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/gerar-contrato" element={<ContractForm />} />

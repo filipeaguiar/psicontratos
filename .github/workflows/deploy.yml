@@ -28,7 +28,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_BASE_PATH: /psicontratos/
+          VITE_BASE_PATH: /
 
       - name: Verify build output
         run: ls -F dist
