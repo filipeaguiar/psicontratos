@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faPhone, faEnvelope, faPaperPlane, faWhatsapp } from '@fortawesome/free-solid-svg-icons';
 
 const ClientForm: React.FC = () => {
   const [clientName, setClientName] = useState('');
@@ -13,60 +15,53 @@ const ClientForm: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Formulário de Contato do Cliente</h1>
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="clientName">
-            Nome Completo
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="clientName"
-            type="text"
-            placeholder="Nome Completo"
-            value={clientName}
-            onChange={(e) => setClientName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="clientPhone">
-            Telefone/WhatsApp
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="clientPhone"
-            type="tel"
-            placeholder="Ex: 81 98129-7306"
-            value={clientPhone}
-            onChange={(e) => setClientPhone(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="clientEmail">
-            E-mail
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="clientEmail"
-            type="email"
-            placeholder="Ex: seuemail@example.com"
-            value={clientEmail}
-            onChange={(e) => setClientEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="flex items-center justify-between">
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit"
-          >
-            Enviar via WhatsApp
-          </button>
-        </div>
-      </form>
+    <div className="container py-4">
+      <h2 className="text-center mb-4 display-6">Formulário de Contato do Cliente</h2>
+      <div className="card p-4 shadow-lg rounded-lg">
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="clientName" className="form-label"><FontAwesomeIcon icon={faUser} className="me-2" />Nome Completo</label>
+            <input
+              type="text"
+              className="form-control"
+              id="clientName"
+              placeholder="Seu nome completo"
+              value={clientName}
+              onChange={(e) => setClientName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="clientPhone" className="form-label"><FontAwesomeIcon icon={faPhone} className="me-2" />Telefone/WhatsApp</label>
+            <input
+              type="tel"
+              className="form-control"
+              id="clientPhone"
+              placeholder="Ex: (81) 98129-7306"
+              value={clientPhone}
+              onChange={(e) => setClientPhone(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="clientEmail" className="form-label"><FontAwesomeIcon icon={faEnvelope} className="me-2" />E-mail</label>
+            <input
+              type="email"
+              className="form-control"
+              id="clientEmail"
+              placeholder="seuemail@example.com"
+              value={clientEmail}
+              onChange={(e) => setClientEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="d-grid gap-2">
+            <button type="submit" className="btn btn-success btn-lg">
+              <FontAwesomeIcon icon={faWhatsapp} className="me-2" />Enviar via WhatsApp
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
